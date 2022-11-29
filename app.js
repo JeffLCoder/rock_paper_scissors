@@ -4,23 +4,19 @@ let computerScore = 0, playerScore = 0;
 //generate random input from computer
 const choices = ['rock', 'paper', 'scissors'];
 const getComputerChoice = () => choices[Math.floor(Math.random() * choices.length)];
-// const computerSelection = getComputerChoice();
 
 //get input from player
-const getPlayerSelection = () => {
-    const selection = prompt('Please input your choice: rock, paper or scissors?');
-    //reject if the input from user is none of the 3 words
-    const playerSelection = selection.trim().toLowerCase();
-    if (choices.includes(playerSelection)) return playerSelection;
-    //return undefined if play's input is invalid
-    alert('Invalid input!');
-    return;
-}
-// const playerSelection = getPlayerSelection();
+
+// const getPlayerSelection = () => {
+// addEventListener to each button
+//return the value of the button
+
 
 //one round of the game
-function playRound(playerSelection, computerSelection) {
+function playRound(e) {
     //check if player's input is valid, otherwise interrupt the process
+    const playerSelection = e.target.name;
+    const computerSelection = getComputerChoice();
     if (playerSelection) {
         // rock=0, paper=1, scissors=2, player wins only if the remainder is 1 or -2
         switch (choices.indexOf(playerSelection) - choices.indexOf(computerSelection)) {
@@ -42,13 +38,24 @@ function playRound(playerSelection, computerSelection) {
     }
     return
 }
-
+const buttons = document.querySelectorAll('.button');
+buttons.forEach(button => {
+    button.addEventListener('click', playRound)
+})
 //play the game for 5 rounds
+
+/*
 function game(num) {
+    // the text of announcement
+    const announceText = document.createElement('p');
+    const announcement = document.querySelector('.announcement');
     for (let i = 0; i < num; i++) {
         playRound(getPlayerSelection(), getComputerChoice());
         if (computerScore > 2 || playerScore > 2) break;
     }
-    console.log(`Player vs Computer - ${playerScore} : ${computerScore}`)
+    announceText.textContent = `Player vs Computer - ${playerScore} : ${computerScore}`
+    announcement.appendChild(announceText);
 }
 
+game(5);
+*/
