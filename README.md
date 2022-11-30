@@ -1,4 +1,10 @@
 # rock_paper_scissors
+2022/11/30 revision
+1. add 3 buttons for selection
+2. change result output from console.log to html
+
+
+
 first JS exercise in the Odin projects
 
 

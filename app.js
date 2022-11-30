@@ -10,8 +10,13 @@ function playRound(e) {
 
     const playerSelection = e.target.name;
     const computerSelection = getComputerChoice();
-    announcement.appendChild(announce);
 
+
+    if (clickCount > num) {
+        announce.textContent = `${num} Rounds!`;
+        return
+    }
+    announcement.appendChild(announce);
     // rock=0, paper=1, scissors=2, player wins only if the remainder is 1 or -2
     switch (choices.indexOf(playerSelection) - choices.indexOf(computerSelection)) {
         case 0:
@@ -31,12 +36,18 @@ function playRound(e) {
     }
     scores.textContent = `Player vs Computer - ${playerScore} : ${computerScore}`
     announcement.appendChild(scores);
+
+    topHeadline.textContent = (`Round Number ${++clickCount > 5 ? 5 : clickCount}:`);
 }
 
 const announce = document.createElement('p');
 const scores = document.createElement('p');
+// const gameRound = document.createElement('p');
 const announcement = document.querySelector('.announcement');
+const topHeadline = document.querySelector('#top-headline');
 const buttons = document.querySelectorAll('.button');
+let clickCount = 1;
+let num = 5;
 buttons.forEach(button => {
     button.addEventListener('click', playRound)
 })
