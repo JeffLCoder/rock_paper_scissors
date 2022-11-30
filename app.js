@@ -5,19 +5,13 @@ let computerScore = 0, playerScore = 0;
 const choices = ['rock', 'paper', 'scissors'];
 const getComputerChoice = () => choices[Math.floor(Math.random() * choices.length)];
 
-//get input from player
-
-// const getPlayerSelection = () => {
-// addEventListener to each button
-//return the value of the button
-
-
 //one round of the game
 function playRound(e) {
 
     const playerSelection = e.target.name;
     const computerSelection = getComputerChoice();
     announcement.appendChild(announce);
+
     // rock=0, paper=1, scissors=2, player wins only if the remainder is 1 or -2
     switch (choices.indexOf(playerSelection) - choices.indexOf(computerSelection)) {
         case 0:
@@ -35,10 +29,12 @@ function playRound(e) {
             scoreRecords.push({ 'computer': computerSelection, 'player': playerSelection, 'winner': 'computer' })
             computerScore += 1;
     }
-
+    scores.textContent = `Player vs Computer - ${playerScore} : ${computerScore}`
+    announcement.appendChild(scores);
 }
 
 const announce = document.createElement('p');
+const scores = document.createElement('p');
 const announcement = document.querySelector('.announcement');
 const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => {
