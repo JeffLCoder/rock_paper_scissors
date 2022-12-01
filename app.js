@@ -7,10 +7,9 @@ const getComputerChoice = () => choices[Math.floor(Math.random() * choices.lengt
 
 //one round of the game
 function playRound(e) {
-
-    const playerSelection = e.target.name;
+    console.log(e);
+    const playerSelection = e.target.dataset.name;
     const computerSelection = getComputerChoice();
-
 
     if (clickCount > num) {
         announce.textContent = `${num} Rounds!`;
@@ -30,7 +29,7 @@ function playRound(e) {
             playerScore += 1;
             break;
         default:
-            announce.textContent = `You lose! ${playerSelection} beats ${computerSelection}!`;
+            announce.textContent = `You lose! ${computerSelection} beats ${playerSelection}!`;
             scoreRecords.push({ 'computer': computerSelection, 'player': playerSelection, 'winner': 'computer' })
             computerScore += 1;
     }
@@ -49,7 +48,8 @@ const buttons = document.querySelectorAll('.button');
 let clickCount = 1;
 let num = 5;
 buttons.forEach(button => {
-    button.addEventListener('click', playRound)
+    button.addEventListener('click', playRound);
+
 })
 //play the game for 5 rounds
 
