@@ -7,20 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 </head>
 
 <body>
-    <header class="headline">
-        <span id="top-headline">Round Number 1</span>
-        <p id="sub-headline">Please choose your play:</p>
-    </header>
-    <main>
-        <button class="button" name="rock" id="rock" value="rock">Rock</button>
-        <button class="button" name="paper" id="paper" value="paper">Paper</button>
-        <button class="button" name="scissors" id="scissors" value="scissors">Scissors</button>
-    </main>
-    <div class="announcement"></div>
-    <div class="score-records"></div>
+    <section>
+        <div class="headline">
+            <span id="top-headline">Round Number 1</span>
+            <p id="sub-headline">Please choose your play:</p>
+        </div>
+        <div class="buttons">
+            <button class="button" name="rock" id="rock" value="rock">
+                <div>&#9994;</div>
+            </button>
+            <button class="button" name="paper" id="paper" value="paper">
+                <div>&#128400;</div>
+            </button>
+            <button class="button" name="scissors" id="scissors" value="scissors">
+                <div>&#9996;</div>
+            </button>
+        </div>
+        <div class="bottom">
+            <div class="announcement"></div>
+            <div class="score-records"></div>
+        </div>
+    </section>
     <script src="app.js"></script>
 </body>
 

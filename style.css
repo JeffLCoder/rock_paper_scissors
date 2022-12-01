@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: inherit; */
+}
+
+html,
+body {
+    font-size: 100%;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    background-image: linear-gradient(to right bottom, rgba(223, 222, 222, 0.4), rgba(155, 154, 154, 0.4)), url(./img/chess--BW.jpg);
+    background-size: cover;
+}
+
+.headline,
+.buttons,
+.bottom {
+    position: relative;
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    position: relative;
+
+}
+
+buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+button {
+    display: inline-block;
+    width: 6em;
+    height: 2em;
+    font-size: 150%;
+    /* writing-mode: vertical-rl;
+    text-orientation: sideways; */
+    /* transform: rotate(0.25turn); */
+    transition: all 0.2s;
+    position: relative;
+    background-color: white;
+    border: none;
+    margin: 1em;
+    border-radius: 6em;
+}
+
+button div {
+    display: inline-block;
+    /*not to occupy the whole space*/
+    transform: rotate(-90deg);
+}
+
+button#rock {
+    animation: moveInLeft .8s ease backwards;
+}
+
+button#paper {
+    animation: moveInBottom .8s ease backwards;
+}
+
+button#scissors {
+    animation: moveInRight .8s ease backwards;
+}
+
+button::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+    background-color: white;
+    border: none;
+
+    border-radius: 6em;
+}
+
+button:hover::after {
+    transform: scale(1.8, 2.2);
+    opacity: 0;
+}
